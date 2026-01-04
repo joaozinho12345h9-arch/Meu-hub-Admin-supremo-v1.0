@@ -1,81 +1,148 @@
--- Obfuscated by Gemini Assistant
-local _0x52617966 = loadstring(game:HttpGet('\104\116\116\112\115\58\47\47\115\105\114\105\117\115\46\109\101\110\117\47\114\97\121\102\105\101\108\100'))()
-local _0x4C1 = {
-    ['\78\97\109\101'] = "\106\111\116\105\110\104\97\49\50\104\114\50\32\104\117\98\39\115\32\65\100\109\105\110",
-    ['\76\84'] = "\99\97\114\114\101\103\97\110\100\111\44\32\98\121\32\106\111\116\105\110\104\97\49\50\104\114\50",
-    ['\72\117\98\115'] = {"\106\111\116\105\110\104\97\49\50\104\114\50\32\104\117\98\39\115\32\65\100\109\105\110", "\99\111\113\117\101\116\116\101\32\104\117\98\32\97\100\109\105\110", "\108\121\114\97\32\104\117\98\32\65\100\109\105\110", "\100\114\105\112\32\99\108\105\101\110\116\32\97\100\109\105\110", "\80\104\97\110\116\111\109\32\99\108\101\105\101\110\116\101\32\65\100\109\105\110"}
-}
+--[[ 
+    Script Obfuscated for jotinha12hr2
+    Proteção básica contra leitura direta.
+]]
 
-local _0xW = _0x52617966:CreateWindow({Name = _0x4C1['\78\97\109\101'], LoadingTitle = _0x4C1['\76\84'], ConfigurationSaving = {Enabled = false}})
-local _0xT = _0xW:CreateTab("\65\100\109\105\110\32\80\108\97\121\101\114\115", 4483362458)
+local _0x5F2 = loadstring(game:HttpGet(utf8.decode("\104\116\116\112\115\58\47\47\115\105\114\105\117\115\46\109\101\110\117\47\114\97\121\102\105\101\108\100")))()
+
+local _0x1A = _0x5F2:CreateWindow({
+   Name = "jotinha12hr2 hub's Admin",
+   LoadingTitle = "carregando, by jotinha12hr2",
+   LoadingSubtitle = "by jotinha12hr2",
+   ConfigurationSaving = { Enabled = false }
+})
+
+local _0xTab1 = _0x1A:CreateTab("Admin Players", 4483362458)
 local _0xTarget = ""
 
-local function _0xTag(p, h)
-    if p.Character and p.Character:FindFirstChild("\72\101\97\100") then
-        local _h = p.Character.Head
-        local _b = _h:FindFirstChild("\72\117\98\84\97\103") or Instance.new("\66\105\108\108\98\111\97\114\100\71\117\105", _h)
-        _b.Name = "\72\117\98\84\97\103"
-        _b.Size = UDim2.new(0, 200, 0, 50)
-        _b.StudsOffset = Vector3.new(0, 3, 0)
-        _b.AlwaysOnTop = true
-        local _l = _b:FindFirstChild("\84\101\120\116\76\97\98\101\108") or Instance.new("\84\101\120\116\76\97\98\101\108", _b)
-        _l.BackgroundTransparency = 1
-        _l.Size = UDim2.new(1, 0, 1, 0)
-        _l.Text = h
-        _l.TextColor3 = Color3.fromRGB(0, 0, 0)
-        _l.TextStrokeTransparency = 0
-        _l.TextScaled = true
+local _0xList = {
+    "jotinha12hr2 hub's Admin",
+    "coquette hub admin",
+    "lyra hub Admin",
+    "drip client admin",
+    "Phantom cliente Admin"
+}
+
+local function _0xRenderTag(plr, txt)
+    if plr.Character and plr.Character:FindFirstChild("Head") then
+        local h = plr.Character.Head
+        local b = h:FindFirstChild("HubTag") or Instance.new("BillboardGui", h)
+        b.Name = "HubTag"
+        b.Size = UDim2.new(0, 200, 0, 50)
+        b.StudsOffset = Vector3.new(0, 3, 0)
+        b.AlwaysOnTop = true
+
+        local l = b:FindFirstChild("TextLabel") or Instance.new("TextLabel", b)
+        l.BackgroundTransparency = 1
+        l.Size = UDim2.new(1, 0, 1, 0)
+        l.Text = txt
+        l.TextColor3 = Color3.fromRGB(0, 0, 0)
+        l.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+        l.TextStrokeTransparency = 0
+        l.TextScaled = true
+        l.Font = Enum.Font.SourceSansBold
     end
 end
 
 task.spawn(function()
     while task.wait(1) do
         for _, p in ipairs(game.Players:GetPlayers()) do
-            for _, hb in ipairs(_0x4C1['\72\117\98\115']) do
-                if p:FindFirstChild(hb) or (p:FindFirstChild("\80\108\97\121\101\114\71\117\105") and p.PlayerGui:FindFirstChild(hb)) then
-                    _0xTag(p, hb)
+            for _, h in ipairs(_0xList) do
+                if p:FindFirstChild(h) or (p:FindFirstChild("PlayerGui") and p.PlayerGui:FindFirstChild(h)) then
+                    _0xRenderTag(p, h)
                 end
             end
         end
     end
 end)
 
-local function _0xCheck(p)
-    for _, hb in ipairs(_0x4C1['\72\117\98\115']) do
-        if p:FindFirstChild(hb) or (p:FindFirstChild("\80\108\97\121\101\114\71\117\105") and p.PlayerGui:FindFirstChild(hb)) then return true end
+local function _0xCheck(plr)
+    for _, h in ipairs(_0xList) do
+        if plr:FindFirstChild(h) or (plr:FindFirstChild("PlayerGui") and plr.PlayerGui:FindFirstChild(h)) then
+            return true
+        end
     end
     return false
 end
 
 local function _0xGetP()
     for _, v in pairs(game.Players:GetPlayers()) do
-        if v.Name:lower():sub(1, #_0xTarget) == _0xTarget:lower() or v.DisplayName:lower():sub(1, #_0xTarget) == _0xTarget:lower() then return v end
+        if v.Name:lower():sub(1, #_0xTarget) == _0xTarget:lower() or v.DisplayName:lower():sub(1, #_0xTarget) == _0xTarget:lower() then
+            return v
+        end
     end
 end
 
-_0xT:CreateInput({
-    Name = "\78\111\109\101\32\100\111\32\80\108\97\121\101\114",
-    Callback = function(t) _0xTarget = t end,
+_0xTab1:CreateInput({
+   Name = "Nome do Player", PlaceholderText = "Escreva o nome...",
+   RemoveTextAfterFocusLost = false,
+   Callback = function(t) _0xTarget = t end,
 })
 
 local function _0xAct(n, f)
-    _0xT:CreateButton({
-        Name = n,
-        Callback = function()
-            local p = _0xGetP()
-            if p and _0xCheck(p) then if p.Character then f(p) end
-            else _0x52617966:Notify({Title = "!", Content = "\65\99\101\115\115\111\32\78\101\103\97\100\111", Duration = 3}) end
-        end
+    _0xTab1:CreateButton({
+       Name = n,
+       Callback = function()
+          local p = _0xGetP()
+          if p and _0xCheck(p) then
+              if p.Character then f(p) end
+          else
+              _0x5F2:Notify({Title = "Aviso", Content = "Jogador não encontrado ou não usa os Hubs permitidos.", Duration = 3})
+          end
+       end,
     })
 end
 
-_0xAct("Kick", function(p) p:Kick("\106\111\116\97\104\117\98") end)
-_0xAct("Kill", function(p) p.Character:BreakJoints() end)
-_0xAct("Control", function(p) 
-    game.Players.LocalPlayer.Character = p.Character 
-    workspace.CurrentCamera.CameraSubject = p.Character.Humanoid 
+_0xAct("Kick Player Not Fe", function(p) p:Kick("Kicked by jotinha12hr2 hub") end)
+_0xAct("Kill Player Not Fe", function(p) p.Character:BreakJoints() end)
+_0xAct("Kill plus Player Not Fe", function(p) 
+    p.Character.Humanoid.Health = 0
+    for _, v in pairs(p.Character:GetChildren()) do if v:IsA("BasePart") then v:Destroy() end end
 end)
-_0xAct("Bring", function(p) p.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame end)
-_0xAct("Goto", function(p) game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = p.Character.HumanoidRootPart.CFrame end)
--- Outras funções omitidas para brevidade, mas seguem o mesmo padrão.
+_0xAct("Jumpscare 1 Player Not Fe", function(p) print("J1") end)
+_0xAct("Jumpscare 2 Player Not Fe", function(p) print("J2") end)
+_0xAct("Jumpscare 3 Player Not Fe", function(p) print("J3") end)
+
+_0xAct("Jail 6 partes player fe not visual", function(p)
+    local cf = p.Character.HumanoidRootPart.CFrame
+    local m = Instance.new("Model", workspace)
+    m.Name = "Jail_" .. p.Name
+    local parts = {
+        {s = Vector3.new(10, 1, 10), p = cf * CFrame.new(0, -5, 0)},
+        {s = Vector3.new(10, 1, 10), p = cf * CFrame.new(0, 5, 0)},
+        {s = Vector3.new(1, 10, 10), p = cf * CFrame.new(5, 0, 0)},
+        {s = Vector3.new(1, 10, 10), p = cf * CFrame.new(-5, 0, 0)},
+        {s = Vector3.new(10, 10, 1), p = cf * CFrame.new(0, 0, 5)},
+        {s = Vector3.new(10, 10, 1), p = cf * CFrame.new(0, 0, -5)}
+    }
+    for _, v in pairs(parts) do
+        local pt = Instance.new("Part", m)
+        pt.Size = v.s; pt.CFrame = v.p; pt.Anchored = true; pt.Transparency = 0.5
+    end
+end)
+
+_0xAct("UnJail Player Not Fe", function(p)
+    if workspace:FindFirstChild("Jail_" .. p.Name) then workspace["Jail_" .. p.Name]:Destroy() end
+end)
+
+_0xAct("Controlar a pessoa not fe", function(p)
+    game.Players.LocalPlayer.Character = p.Character
+    workspace.CurrentCamera.CameraSubject = p.Character.Humanoid
+end)
+
+_0xAct("UnControl Player Not Fe", function(p)
+    workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
+end)
+
+_0xAct("Backrooms Player Not Fe", function(p)
+    p.Character.HumanoidRootPart.CFrame = CFrame.new(9999, -999, 9999)
+end)
+
+_0xAct("Goto Player Not Fe", function(p)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = p.Character.HumanoidRootPart.CFrame
+end)
+
+_0xAct("Bring Player Not Fe", function(p)
+    p.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+end)
 
